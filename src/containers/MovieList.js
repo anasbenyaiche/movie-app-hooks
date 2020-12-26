@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import MovieCard from "../components/MovieCard";
 import PropTypes from "prop-types";
 
 const MovieList = ({ movieList, handleDelete }) => {
+  useEffect(() => {}, [movieList]);
+
   return (
     <div className="movies-container">
       {movieList?.map((movie, index) => (

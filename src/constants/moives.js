@@ -1,6 +1,6 @@
 export const movies = [
   {
-    id: Math.random(),
+    id: 1,
     title: "Titan",
     description: "the movie of ... ",
     posteUrl:
@@ -8,7 +8,7 @@ export const movies = [
     rating: 5,
   },
   {
-    id: Math.random(),
+    id: 2,
     title: "Titanic",
     description: "Real story...",
     posteUrl:

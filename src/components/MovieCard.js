@@ -8,6 +8,9 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import PropTypes from "prop-types";
+import { useDispatch } from "react-redux";
+import { deleteMovie } from "../Redux/actions/action";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
@@ -18,9 +21,20 @@ const useStyles = makeStyles({
   },
 });
 
-export default function MovieCard({ movie, handleDelete }) {
+export default function MovieCard({ movie }) {
   const { title, description, posteUrl, rating, id } = movie;
   const classes = useStyles();
+
+  const history = useHistory()
+  const dispatch = useDispatch();
+
+  const handleDelete = () => {
+    console.log("Delete here");
+    dispatch(deleteMovie(id));
+  };
+  const handleNavigate = () => {
+    history.push(`/movies/${id}`)
+  }
 
   return (
     <Card className={classes.root}>
@@ -40,11 +54,11 @@ export default function MovieCard({ movie, handleDelete }) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="secondary">
+        <Button onClick={handleDelete} size="small" color="secondary">
           Delete
         </Button>
-        <Button onClick={() => handleDelete(id)} size="small" color="primary">
-          Learn More
+        <Button onClick={handleNavigate} size="small" color="primary">
+          update
         </Button>
       </CardActions>
     </Card>
